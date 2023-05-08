@@ -146,10 +146,8 @@ class ErrorSensor(SensorEntity):
 
         if error:
             self._attr_native_value = error["status"]                 
-            #self._attr_native_unit_of_measurement = outside_temperature["waterPressure"]["unit"]
      
         else:
-            #self._attr_native_unit_of_measurement = ""
             self._attr_native_value = "N/A"    
 
 
@@ -302,8 +300,9 @@ class BurningHoursSensor(SensorEntity):
         consumption = consumptions.get("burningHoursCH", None)
 
         if consumption:
-            self._attr_native_value = int(consumption["value"])             
-            self._attr_native_unit_of_measurement = consumption["unit"]     
+            self._attr_native_value = int(consumption["value"])
+            #self._attr_native_unit_of_measurement = consumption["unit"]     
+	    self._attr_native_unit_of_measurement = "h"
 
         else:
             self._attr_native_unit_of_measurement = ""
@@ -341,8 +340,9 @@ class BurningHoursWaterSensor(SensorEntity):
         consumption = consumptions.get("burningHoursDHW", None)
 
         if consumption:
-            self._attr_native_value = int(consumption["value"])             
-            self._attr_native_unit_of_measurement = consumption["unit"]     
+            self._attr_native_value = int(consumption["value"])
+            #self._attr_native_unit_of_measurement = consumption["unit"]     
+	    self._attr_native_unit_of_measurement = "h"
 
         else:
             self._attr_native_unit_of_measurement = ""
